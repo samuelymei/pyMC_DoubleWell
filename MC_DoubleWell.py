@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+
 class state:
   def __potential(self,xi):
     from math import sqrt
