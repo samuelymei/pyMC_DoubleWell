@@ -39,9 +39,25 @@ class state:
 ##########################################################################################
 
 def getPara():
-    T = float(raw_input("input temperature: "))
-    x0 = float(raw_input("input the initial position: "))
-    Nstep = int(raw_input("input the number of MC steps: "))
+    try:
+      T = float(raw_input("input temperature: "))
+      assert T > 0.0
+    except (ValueError, AssertionError), e:
+      print 'input a positive float number for Temperature'
+      print e
+    
+    try:
+      x0 = float(raw_input("input initial position: "))
+    except ValueError:
+      print 'input a float number for initial position'
+
+    try:
+      Nstep = int(raw_input("input the number of MC steps: "))
+      assert Nstep > 0
+    except (ValueError, AssertionError), e:
+      print 'input a positive integer number for MC steps'
+      print e
+
     trajfile = raw_input("input the trajectory file: ")
     return T, x0, Nstep, trajfile
 
